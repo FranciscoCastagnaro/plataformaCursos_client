@@ -10,9 +10,9 @@ export const Navbar = () => {
             </div>
             <div>
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
+                <a href="#about">Nuestros cursos</a>
+                <a href="#services">Nosotros</a>
+                <a href="#contact">Contacto</a>
             </div>
         </nav>
     );

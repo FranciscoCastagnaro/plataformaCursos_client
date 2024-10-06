@@ -1,9 +1,10 @@
 .homeMain {
+    height: 80vh;
     padding: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 150px;
+    gap: 75px;
 }
 
 .text {
@@ -13,11 +14,12 @@
     flex-direction: column;
 }
 
-.text h1, .text h3 {
+.text h1, .text h3, .text h4 {
     color: #000;
 }
 
 .text h1 {
+    line-height: 2.8rem;
     max-width: 70%;
     font-size: 3rem;
     font-weight: bold;
@@ -32,6 +34,15 @@
     max-width: 70%;
 }
 
+.text h4 {
+    max-width: 50%;
+    font-weight: 400;
+}
+
+.text h4 span {
+    color: #F9AB55;
+}
+
 .homeMain img {
-    width: 450px;
+    width: 500px;
 }

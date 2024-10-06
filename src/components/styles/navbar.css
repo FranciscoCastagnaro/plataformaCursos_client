@@ -30,7 +30,7 @@
 }
 
 .navbar a:hover::after {
-    width: 100%; /* Expande la línea completa */
+    width: 100%;
 }
 
 .logo {
