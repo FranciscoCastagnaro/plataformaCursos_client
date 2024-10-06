@@ -1,4 +1,6 @@
 import './styles/maininfo.css'
+import maininfostock1 from '/src/assets/maininfostock1.jpg'
+import maininfostock2 from '/src/assets/maininfostock2.jpg'
 
 export const MainInfo = () => {
     return (
@@ -12,10 +14,10 @@ export const MainInfo = () => {
                         cuando te convenga.
                     </p>
                 </div>
-                <img src='src\assets\maininfostock1.jpg' alt="course stock image teacher 1" />
+                <img src={maininfostock1} alt="course stock image teacher 1" />
             </div>
             <div className="info">
-                <img src='src\assets\maininfostock2.jpg' alt="course stock image teacher 2" />
+                <img src={maininfostock2} alt="course stock image teacher 2" />
                 <div className="textInfo">
                     <h4>
                         Más que un curso, <span>una experiencia de aprendizaje</span>

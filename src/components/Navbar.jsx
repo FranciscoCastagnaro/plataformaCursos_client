@@ -1,11 +1,12 @@
 import './styles/navbar.css'
+import logonavbar from '/src/assets/logoblanco.png'
 
 export const Navbar = () => {
 
     return (
         <nav className="navbar">
             <div className="logo">
-                <img src="src\assets\logoblanco.png" alt="logo-navbar" />
+                <img src={logonavbar} alt="logo-navbar" />
                 <p>Course Commerce</p>
             </div>
             <div>
