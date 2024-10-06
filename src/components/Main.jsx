@@ -1,4 +1,5 @@
 import './styles/main.css'
+import collorpattern from '../assets/collorpatternmain.png'
 
 export const Main = () => {
     return (
@@ -15,7 +16,7 @@ export const Main = () => {
                     Contamos con más de 200 cursos en diversas áreas, a un <span>click</span> de distancia.
                 </h4>
             </div>
-            <img src={"./src/assets/collorpatternmain.png"} alt="color-pattern" />
+            <img src={collorpattern} alt="color-pattern" />
         </main>
     )
 }
