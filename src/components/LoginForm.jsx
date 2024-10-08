@@ -2,7 +2,7 @@ import "./styles/loginform.css";
 
 export const LoginForm = () => {
   return (
-    <main>
+    <main className="login-main">
       <div className="formcard">
         <img src="src\assets\logotextoblanco.png" alt="loginlogo" />
         <form className="login-form">
