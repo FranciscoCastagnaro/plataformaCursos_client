@@ -1,5 +1,5 @@
 main {
-  background-color: #fff;
+  background-color: #909CC2;
   display: flex;
   place-content: center;
   align-items: center;
@@ -31,3 +31,13 @@ main {
   width: 50%;
   height: 100%;
 }
+
+.login-form input[type=text], .login-form input[type=password]{
+  color: #000;
+  background-color: #fff;
+}
+
+.login-form label {
+  color: #fff;
+}
+

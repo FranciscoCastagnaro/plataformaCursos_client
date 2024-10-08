@@ -5,9 +5,11 @@ export const LoginForm = () => {
     <main>
       <div className="formcard">
         <img src="src\assets\logotextoblanco.png" alt="loginlogo" />
-        <form>
-          <input type="text" />
-          <input type="password" name="" id="" />
+        <form className="login-form">
+          <label htmlFor="usuario">Usuario</label>
+          <input type="text" name="usuario"/>
+          <label htmlFor="contrasenia">Contraseña:</label>
+          <input type="password" name="contrasenia"/>
           <button>Login</button>
           <button>Register</button>
         </form>
