@@ -1,0 +1,69 @@
+.contacto-section {
+    width: 100vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    margin: 40px 0 100px 0;
+}
+
+.contacto-info h2, .contacto-info p {
+    text-align: center;
+}
+
+.contacto-info h2 {
+    color: #f9ab55;
+    text-align: center;
+    font-weight: 800;
+}
+
+.contacto-section p {
+    color: #000;
+    width: 50%;
+    margin: auto;
+}
+
+.form-contacto {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-contacto input[type=text], .form-contacto input[type=email], .form-contacto textarea{
+    color: #000;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #f9ab55;
+    resize: none;
+}
+
+.form-contacto button { 
+    color: #fff;
+    background-color: #f9ab55;
+}
+
+.form-contacto button:hover {
+    background-color: #000;
+}
+
+.form-contacto label {
+    color: #000;
+}
+
+.contacto-info ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.contacto-info ul li {
+    list-style: none;
+    color: #000;
+}
+
+.contacto-info ul li span {
+    font-weight: 600;
+}

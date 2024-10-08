@@ -1,39 +1,40 @@
 .infoSection {
-    padding: 25px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 150px;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 100px;
 }
 
-.info{
-    display: flex;
-    gap: 120px;
-    width: 60%;
-    align-items: center;
-    justify-content: center;
+.info {
+  display: flex;
+  gap: 120px;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
 }
 
 .textInfo {
-    max-width: 50%;
+  max-width: 50%;
 }
 
-.textInfo, .textInfo h4 {
-    color: #000;
-} 
+.textInfo,
+.textInfo h4 {
+  color: #000;
+}
 
 .textInfo h4 {
-    font-size: 1.8rem;
-    font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .textInfo h4 span {
-    color: #F9AB55;
+  color: #f9ab55;
 }
 
 .info img {
-    max-width: 300px;
-    height: auto;
+  max-width: 300px;
+  height: auto;
 }

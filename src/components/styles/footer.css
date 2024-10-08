@@ -1,26 +1,26 @@
 footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #084887;
-    border: 0;
-    color: #fff;
-    padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #084887;
+  border: 0;
+  color: #fff;
+  padding: 20px 50px;
 }
 
 .sections {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .sections a {
-    width: max-content;
-    color: #fff;
-    text-decoration: none;
-    margin-left: 15px;
-    position: relative;
+  width: max-content;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  position: relative;
 }
 
 .sections a:hover {
-    color: #F9AB55;
+  color: #f9ab55;
 }

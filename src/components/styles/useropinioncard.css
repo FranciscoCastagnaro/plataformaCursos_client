@@ -1,0 +1,29 @@
+.user_opinion_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    min-height: 350px;
+    border: 2px solid #f9ab55;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.user_opinion_text h4, .user_opinion_text p {
+    color: #000;
+}
+
+.user_opinion_text h4 {
+    text-align: center;
+    font-weight: 700;
+}
+
+.user_opinion_text p {
+    font-style: italic;
+    text-align: center;
+}
+
+.user_opinion_card img  {
+    width: 50px;
+}

@@ -1,56 +1,55 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #084887;
-    padding: 0px 20px;
-    color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #084887;
+  padding: 0px 20px;
+  color: #fff;
 }
 
 .navbar a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 15px;
-    position: relative;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  position: relative;
 }
 
 .navbar a:hover {
-    color: #F9AB55;
+  color: #f9ab55;
 }
 
 .navbar a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: -5px;
-    width: 0;
-    height: 2px;
-    background-color: #F9AB55;
-    transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #f9ab55;
+  transition: width 0.3s ease;
 }
 
 .navbar a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .logo p {
-    transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .logo p:hover {
-    color: #F9AB55;
+  color: #f9ab55;
 }
 
 .logo img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
-

@@ -1,0 +1,28 @@
+.nosotros-section {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nosotros-info {
+  text-align: center;
+  color: #000;
+}
+
+.nosotros-info h2 {
+  color: #f9ab55;
+  font-weight: 800;
+}
+
+.nosotros-info p {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+
+.nosotros-info p a {
+  cursor: pointer;
+  color: #f9ab55;
+}

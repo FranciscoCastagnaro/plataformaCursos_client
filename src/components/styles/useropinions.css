@@ -1,0 +1,8 @@
+.user_opinion_section {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 170px;
+    margin-bottom: 100px;
+}
