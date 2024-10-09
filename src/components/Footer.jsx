@@ -1,4 +1,5 @@
 import "./styles/footer.css";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -7,10 +8,10 @@ export const Footer = () => {
         Course Commerce © 2024 Todos los derechos reservados.
       </div>
       <div className="sections">
-        <a href="#home">Home</a>
-        <a href="#about">Nuestros cursos</a>
-        <a href="#services">Nosotros</a>
-        <a href="#contact">Contacto</a>
+        <Link to={"/home"}>Home</Link>
+        <Link to={"/cursos"}>Nuestros cursos</Link>
+        <Link to={"/nosotros"}>Nosotros</Link>
+        <Link to={"/contacto"}>Contacto</Link>
       </div>
     </footer>
   );

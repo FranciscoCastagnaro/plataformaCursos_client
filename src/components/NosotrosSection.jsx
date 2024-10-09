@@ -1,4 +1,4 @@
-import './styles/nosotrossection.css'
+import "./styles/nosotrossection.css";
 
 export const NosotrosSection = () => {
   return (
@@ -30,8 +30,22 @@ export const NosotrosSection = () => {
           desarrollo profesional, apasionados por el aprendizaje continuo.
           Además, nuestros instructores son líderes en sus industrias, con años
           de experiencia que comparten generosamente con nuestros estudiantes.
-          Somos: <a href='https://www.instagram.com/francisco_castagnaro/' target='_blank'>Francisco Castagnaro</a>, <a href='https://www.instagram.com/lucianokpello/' target='_blank'>Luciano Capello</a>, <a href='https://www.instagram.com/tomcardoz0/' target='_blank'>Tomás Cardozo</a> y <a href='https://www.instagram.com/matideliaa/' target='_blank'>Matias D
-          Elia</a>
+          Somos:{" "}
+          <a
+            href="https://www.instagram.com/francisco_castagnaro/"
+            target="_blank"
+          >
+            Francisco Castagnaro
+          </a>
+          ,{" "}
+          <a href="https://www.instagram.com/lucianokpello/" target="_blank">
+            Luciano Capello
+          </a>
+          ,{" "}
+          y{" "}
+          <a href="https://www.instagram.com/matideliaa/" target="_blank">
+            Matias D Elia
+          </a>
         </p>
       </div>
     </section>

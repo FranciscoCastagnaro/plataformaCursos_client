@@ -38,10 +38,11 @@
   align-items: center;
   font-size: 24px;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .logo p {
+  margin: 0;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
