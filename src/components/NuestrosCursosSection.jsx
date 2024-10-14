@@ -23,6 +23,7 @@ export const NuestrosCursosSection = () => {
       .catch((error) => {
         console.error("Hubo un error:", error);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
