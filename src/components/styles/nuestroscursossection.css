@@ -9,3 +9,10 @@
     flex-wrap: wrap;
     gap: 25px;
 }
+
+.nuestroscursos-error {
+    color: #f58a07;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: auto;
+}

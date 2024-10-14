@@ -18,14 +18,11 @@ export const NuestrosCursosSection = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-
         setCursos(data);
       })
       .catch((error) => {
         console.error("Hubo un error:", error);
       });
-    console.log("i fire once");
   }, []);
 
   return (
@@ -45,7 +42,9 @@ export const NuestrosCursosSection = () => {
           );
         })
       ) : (
-        <div>a</div>
+        <div className="nuestroscursos-error">
+            No se han encontrado cursos.
+        </div>
       )}
     </section>
   );
