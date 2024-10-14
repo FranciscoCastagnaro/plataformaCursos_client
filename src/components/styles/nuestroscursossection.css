@@ -1,0 +1,11 @@
+.nuestroscursos-section {
+    min-height: 100vh;
+    height: max-content;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+}

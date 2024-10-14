@@ -33,6 +33,16 @@
   width: 100%;
 }
 
+.navbar button {
+  background-color: #F58A07;
+  padding: 10px 20px;
+  margin-left: 15px;
+}
+
+.navbar button:hover {
+  background-color: #f9ab55;
+}
+
 .logo {
   display: flex;
   align-items: center;

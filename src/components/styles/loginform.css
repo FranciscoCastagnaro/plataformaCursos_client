@@ -1,5 +1,5 @@
 .login-main {
-  background-color: #909CC2;
+  background-color: #909cc2;
   display: flex;
   place-content: center;
   align-items: center;
@@ -15,11 +15,17 @@
   border-radius: 8px;
   padding: 20px;
   width: 500px;
-  height: 600px;
+  height: 650px;
   background-color: #084887;
 }
 
-.formcard img {
+#imgRegister {
+  width: 300px;
+  margin-bottom: -100px;
+  margin-top: -50px;
+}
+
+#imgLogin {
   width: 300px;
   margin-bottom: -150px;
 }
@@ -32,7 +38,9 @@
   height: 100%;
 }
 
-.login-form input[type=text], .login-form input[type=password]{
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"] {
   color: #000;
   background-color: #fff;
 }
@@ -41,3 +49,33 @@
   color: #fff;
 }
 
+.login-form button {
+  background-color: #f58a07;
+  padding: 10px 20px;
+}
+
+.login-form button:hover {
+  background-color: #f9ab55;
+}
+
+.error,
+.success {
+  color: #fff;
+  width: 400px;
+  background-color: #ed4337;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.error {
+  align-self: center;
+  background-color: #ed4337;
+}
+
+.success {
+  background-color: #5cb85c;
+  width: 90%;
+  padding: 10px 10px;
+}
