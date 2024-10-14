@@ -13,7 +13,7 @@ export const NuestrosCursosSection = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Error en la solicitud");
+          setCursos();
         }
         return response.json();
       })
@@ -22,6 +22,7 @@ export const NuestrosCursosSection = () => {
       })
       .catch((error) => {
         console.error("Hubo un error:", error);
+        setCursos();
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
