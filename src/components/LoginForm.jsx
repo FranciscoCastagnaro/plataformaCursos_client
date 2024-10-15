@@ -56,7 +56,7 @@ export const LoginForm = () => {
       })
       .then((data) => {
         setMsg(<div className="success">Ingreso exitoso</div>);
-        console.log("Registro exitoso:", data);
+        console.log("Ingreso exitoso:", data);
       })
       .catch((error) => {
         console.error("Hubo un error:", error);
