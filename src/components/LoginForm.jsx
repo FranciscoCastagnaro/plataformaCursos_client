@@ -1,6 +1,8 @@
 import "./styles/loginform.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import logologin from "/src/assets/logotextoblanco.png";
+
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -70,7 +72,7 @@ export const LoginForm = () => {
     <main className="login-main">
       <div className="formcard">
         <img
-          src="src\assets\logotextoblanco.png"
+          src={logologin}
           alt="loginlogo"
           id="imgLogin"
         />

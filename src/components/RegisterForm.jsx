@@ -1,6 +1,8 @@
 import "./styles/loginform.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import logoregister from "/src/assets/logotextoblanco.png";
+
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
@@ -84,7 +86,7 @@ export const RegisterForm = () => {
     <main className="login-main">
       <div className="formcard">
         <img
-          src="src\assets\logotextoblanco.png"
+          src={logoregister}
           alt="loginlogo"
           id="imgRegister"
         />
