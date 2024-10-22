@@ -43,7 +43,9 @@ export const CursoCard = ({
       <p className="curso-fecha">
         Fecha de inicio: {transformarFecha(fechaInicio)}
       </p>
-      {descuento != 0 && (<p className="curso-descuento">{descuento}% de descuento!</p>)}
+      {descuento != 0 && (
+        <p className="curso-descuento">{descuento}% de descuento!</p>
+      )}
       <div className="curso-vacantes">
         <p>
           Vacantes: {vacantesDisponibles}/{vacantesTotales}
