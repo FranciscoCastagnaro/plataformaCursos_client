@@ -45,14 +45,6 @@ export const EditarCursoSection = () => {
     const vacantes = document.getElementsByName("vacantes")[0].value;
     const descripcion = document.getElementsByName("descripcion")[0].value;
 
-    console.log(nombre)
-    console.log(categoria)
-    console.log(profesor)
-    console.log(fechaInicio)
-    console.log(vacantes)
-    console.log(descripcion)
-    console.log(curso.description)
-
     fetch(COURSES_ENDPOINT, {
       method: "PUT",
       body: JSON.stringify({
