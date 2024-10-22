@@ -1,13 +1,27 @@
 .nuestroscursos-section {
     min-height: 100vh;
+    width: 100vw;
     height: max-content;
-    width: 100%;
     padding: 20px;
+}
+
+.nuestroscursos-section .nuestroscursos-filtros select, .nuestroscursos-filtros input {
+    color: #fff;
+    width: 200px;
+    margin: 0 0 10px 0;
+    background-color: #084887;
+}
+
+.nuestroscursos-section .nuestroscursos-filtros label {
+    color: #000;
+    font-weight: 500;
+}
+
+.nuestroscursos-filtros {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 25px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .nuestroscursos-error {
@@ -15,4 +29,12 @@
     font-weight: bold;
     font-size: 2rem;
     margin: auto;
+}
+.nuestroscursos-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
 }

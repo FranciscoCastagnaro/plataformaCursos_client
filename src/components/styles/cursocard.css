@@ -53,6 +53,11 @@
   border-radius: 6px;
 }
 
+.curso-descuento {
+  color: #084887;
+  font-size: 1rem;
+}
+
 .curso-vacantes p {
   font-size: 1rem;
   font-weight: 500;

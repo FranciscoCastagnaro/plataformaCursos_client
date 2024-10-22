@@ -1,0 +1,58 @@
+.adminsection {
+  min-height: 100vh;
+  height: max-content;
+  color: #000;
+}
+
+.adminsection h2 {
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.adminsection-panel {
+  padding: 50px;
+}
+
+.adminsection-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.adminsection-table tr:nth-child(even) td input {
+  background-color: #fff;
+}
+
+.input-descuento {
+  margin-top: 10px;
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+.adminsection-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-crear {
+  background-color: #f58a07;
+}
+
+.btn-crear:hover {
+  background-color: #f9ab55;
+}
+
+.btn-table {
+  margin: 30px 5px;
+  padding: 10px 15px;
+}
+
+.btn-descuento {
+  padding: 10px 22px;
+}
+
+.td-acciones {
+  margin: auto;
+}

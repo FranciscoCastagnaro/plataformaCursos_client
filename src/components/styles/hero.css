@@ -43,7 +43,8 @@
 
 .text h4 span {
   color: #f9ab55;
-}
+  font-weight: 800;
+} 
 
 .hero img {
   margin-top: 50px;
