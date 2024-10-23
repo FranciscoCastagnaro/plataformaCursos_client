@@ -5,7 +5,7 @@ import "./styles/useropinions.css";
 export const UserOpinions = () => {
   const users = [
     {
-      username: "Carla G, Desarrolladora de Software",
+      username: "Carla G., Desarrolladora de Software",
       opinion:
         "Gracias a Course Commerce, mejoré mis habilidades en programación y conseguí el trabajo de mis sueños. Los instructores son expertos y las lecciones, súper claras.",
       photo: UsernameProfilePicture,
