@@ -126,7 +126,7 @@ export const AdminSection = () => {
                 <tr key={curso.id}>
                   <td>{curso.description}</td>
                   <td>{curso.category.description}</td>
-                  <td>-</td>
+                  <td>{curso.longDescription}</td>
                   <td>
                     <input
                       type="number"
