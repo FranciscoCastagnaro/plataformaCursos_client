@@ -56,3 +56,13 @@
 .td-acciones {
   margin: auto;
 }
+
+.adminsection-unauthorized {
+  min-height: 100vh;
+  height: max-content;
+  color: #000;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  font-weight: 600;
+}

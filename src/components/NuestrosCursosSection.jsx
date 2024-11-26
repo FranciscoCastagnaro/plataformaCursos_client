@@ -4,8 +4,9 @@ import { CursoCard } from "./CursoCard";
 
 export const NuestrosCursosSection = () => {
   const [cursos, setCursos] = useState([]);
-  const [filtroCategoria, setFiltroCategoria] = useState();
-  const [filtroDescripcion, setFiltroDescripcion] = useState(""); // Nuevo estado para la búsqueda por descripción
+  const [categorias, setCategorias] = useState([]);
+  const [filtroCategoria, setFiltroCategoria] = useState("all");
+  const [filtroDescripcion, setFiltroDescripcion] = useState("");
 
   const URL = "http://localhost:4002";
   const COURSES_ENDPOINT = `${URL}/courses`;
@@ -13,9 +14,9 @@ export const NuestrosCursosSection = () => {
   const getCategories = (data) => {
     const categories = [];
 
-    for (const curso in data) {
-      if (!categories.includes(data[curso].category.description)) {
-        categories.push(data[curso].category.description);
+    for (const curso of data) {
+      if (!categories.includes(curso.category.description)) {
+        categories.push(curso.category.description);
       }
     }
 
@@ -38,11 +39,8 @@ export const NuestrosCursosSection = () => {
         ? true
         : curso.category.description === filtroCategoria
     )
-    .filter(
-      (curso) =>
-        curso.description
-          .toLowerCase()
-          .includes(filtroDescripcion.toLowerCase()) // Filtrado por descripción
+    .filter((curso) =>
+      curso.description.toLowerCase().includes(filtroDescripcion.toLowerCase())
     );
 
   useEffect(() => {
@@ -51,32 +49,17 @@ export const NuestrosCursosSection = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          setCursos();
+          setCursos([]);
         }
         return response.json();
       })
       .then((data) => {
-
-        const categories = getCategories(data);
-        const selectElement = document.getElementById("categorias");
-
-        selectElement.innerHTML = "";
-        const allOption = document.createElement("option");
-        allOption.value = "all";
-        allOption.textContent = "Todas las categorías";
-        selectElement.appendChild(allOption);
-
-        for (const i in categories) {
-          const option = document.createElement("option");
-          option.value = categories[i];
-          option.textContent = categories[i];
-          selectElement.appendChild(option);
-        }
         setCursos(data);
+        setCategorias(["all", ...getCategories(data)]);
       })
       .catch((error) => {
         console.error("Hubo un error:", error);
-        setCursos();
+        setCursos([]);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -97,7 +80,13 @@ export const NuestrosCursosSection = () => {
             name="categorias"
             id="categorias"
             onChange={handleChangeFiltroCategoria}
-          ></select>
+          >
+            {categorias.map((categoria, index) => (
+              <option key={index} value={categoria}>
+                {categoria === "all" ? "Todas las categorías" : categoria}
+              </option>
+            ))}
+          </select>
         </div>
       )}
       <div className="nuestroscursos-container">
@@ -117,7 +106,7 @@ export const NuestrosCursosSection = () => {
           ))
         ) : (
           <div className="nuestroscursos-error">
-            No se han encontraron cursos.
+            No se han encontrado cursos.
           </div>
         )}
       </div>

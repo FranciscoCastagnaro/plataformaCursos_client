@@ -3,37 +3,38 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logoregister from "/src/assets/logotextoblanco.png";
 
-
 export const RegisterForm = () => {
   const navigate = useNavigate();
-  const [msg, setMsg] = useState();
+  const [formData, setFormData] = useState({
+    usuario: "",
+    email: "",
+    contrasenia: "",
+    confirmarContrasenia: "",
+  });
+  const [msg, setMsg] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const URL = "http://localhost:4002";
   const REGISTER_ENDPOINT = `${URL}/auth/register`;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleClickLogin = (e) => {
     e.preventDefault();
     navigate("/login");
   };
 
-  const handleClickRegister = (e) => {
+  const handleClickRegister = async (e) => {
     e.preventDefault();
-    const btn = document.getElementById("registerBtn");
-    const username = document.getElementsByName("usuario")[0].value;
-    const email = document.getElementsByName("email")[0].value;
-    const contrasenia = document.getElementsByName("contrasenia")[0].value;
-    const confirmarcontrasenia = document.getElementsByName(
-      "confirmarcontrasenia"
-    )[0].value;
+    const { usuario, email, contrasenia, confirmarContrasenia } = formData;
 
-    if (contrasenia !== confirmarcontrasenia)
-      return setMsg(
-        <div className="error">
-          Las contraseñas no coinciden.
-          <br />
-          Por favor, asegúrate de ingresarlas correctamente.
-        </div>
-      );
-    if (!username)
+    if (!usuario) {
       return setMsg(
         <div className="error">
           El nombre de usuario es obligatorio.
@@ -41,7 +42,8 @@ export const RegisterForm = () => {
           Por favor, ingresa un nombre de usuario.
         </div>
       );
-    if (!email)
+    }
+    if (!email) {
       return setMsg(
         <div className="error">
           El correo electrónico es obligatorio.
@@ -49,59 +51,84 @@ export const RegisterForm = () => {
           Por favor, ingresa tu correo para continuar.
         </div>
       );
+    }
+    if (contrasenia !== confirmarContrasenia) {
+      return setMsg(
+        <div className="error">
+          Las contraseñas no coinciden.
+          <br />
+          Por favor, asegúrate de ingresarlas correctamente.
+        </div>
+      );
+    }
 
-    btn.disabled = true;
+    setIsSubmitting(true);
 
-    fetch(REGISTER_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: contrasenia,
-        role: "USER",
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error en la solicitud");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setMsg(<div className="success">Registro exitoso</div>);
-        console.log("Registro exitoso:", data);
-      })
-      .catch((error) => {
-        console.error("Hubo un error:", error);
-        setMsg(<div className="error">{error}</div>);
+    try {
+      const response = await fetch(REGISTER_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: usuario,
+          email: email,
+          password: contrasenia,
+          role: "USER",
+        }),
       });
 
-    btn.disabled = false;
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
+
+      const data = await response.json();
+      setMsg(<div className="success">Registro exitoso</div>);
+      console.log("Registro exitoso:", data);
+    } catch (error) {
+      console.error("Hubo un error:", error);
+      setMsg(<div className="error">Error al registrar: {error.message}</div>);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <main className="login-main">
       <div className="formcard">
-        <img
-          src={logoregister}
-          alt="loginlogo"
-          id="imgRegister"
-        />
+        <img src={logoregister} alt="loginlogo" id="imgRegister" />
         <form className="login-form">
           <label htmlFor="usuario">Usuario</label>
-          <input type="text" name="usuario" />
+          <input
+            type="text"
+            name="usuario"
+            value={formData.usuario}
+            onChange={handleChange}
+          />
           <label htmlFor="email">Correo</label>
-          <input type="email" name="email" />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
           <label htmlFor="contrasenia">Contraseña:</label>
-          <input type="password" name="contrasenia" />
-          <label htmlFor="confirmarcontrasenia">Confirmar contraseña:</label>
-          <input type="password" name="confirmarcontrasenia" />
+          <input
+            type="password"
+            name="contrasenia"
+            value={formData.contrasenia}
+            onChange={handleChange}
+          />
+          <label htmlFor="confirmarContrasenia">Confirmar contraseña:</label>
+          <input
+            type="password"
+            name="confirmarContrasenia"
+            value={formData.confirmarContrasenia}
+            onChange={handleChange}
+          />
           {msg}
-          <button onClick={handleClickRegister} id="registerBtn">
-            Registrarme
+          <button onClick={handleClickRegister} disabled={isSubmitting}>
+            {isSubmitting ? "Registrando..." : "Registrarme"}
           </button>
           <button onClick={handleClickLogin}>Ingresar</button>
         </form>

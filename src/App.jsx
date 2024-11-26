@@ -9,6 +9,8 @@ import { Admin } from "./views/Admin.jsx";
 import { CursoDetalle } from "./views/CursoDetalle.jsx";
 import { CrearCurso } from "./views/CrearCurso.jsx";
 import { EditarCurso } from "./views/EditarCurso.jsx";
+import { Carrito } from "./views/Carrito.jsx";
+import { MisCursos } from "./views/MisCursos.jsx";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/admin/crear" element={<CrearCurso />} />
         <Route path="/admin/editar" element={<EditarCurso />} />
         <Route path="/detalle" element={<CursoDetalle />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/mis-cursos" element={<MisCursos />} />
       </Routes>
     </>
   );

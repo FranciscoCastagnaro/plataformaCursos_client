@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import "./styles/adminsection.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const AdminSection = () => {
   const [cursos, setCursos] = useState([]);
+  const [descuentos, setDescuentos] = useState({});
   const [shouldUpdate, setShouldUpdate] = useState(false);
+  const loggedIn = useSelector((state) => state.user);
   const navigate = useNavigate();
   const URL = "http://localhost:4002";
   const COURSES_ENDPOINT = `${URL}/courses`;
@@ -16,34 +19,42 @@ export const AdminSection = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          setCursos();
+          setCursos([]);
         }
         return response.json();
       })
       .then((data) => {
-        console.log();
         setCursos(data);
+        const initialDiscounts = data.reduce((acc, curso) => {
+          acc[curso.description] = "";
+          return acc;
+        }, {});
+        setDescuentos(initialDiscounts);
       })
       .catch((error) => {
         console.error("Hubo un error:", error);
-        setCursos();
+        setCursos([]);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldUpdate]);
 
+  const handleChangeDescuento = (description, value) => {
+    setDescuentos((prev) => ({
+      ...prev,
+      [description]: value,
+    }));
+  };
+
   const handleClickCrear = () => {
-    navigate("/editar", {
+    navigate("/admin/crear", {
       state: {},
     });
   };
 
-  const handleClickEliminar = (e) => {
-    const descripcion = e.target.dataset.desc;
-
+  const handleClickEliminar = (description) => {
     fetch(COURSES_ENDPOINT, {
       method: "DELETE",
       body: JSON.stringify({
-        description: descripcion,
+        description,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -55,8 +66,7 @@ export const AdminSection = () => {
         }
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         alert("Curso eliminado con éxito");
         setShouldUpdate((prev) => !prev);
       })
@@ -66,14 +76,17 @@ export const AdminSection = () => {
       });
   };
 
-  const handleClickDescuento = (e) => {
-    const descripcion = e.target.dataset.desc;
-    const descuento = document.getElementById(`descuento_${descripcion}`).value;
+  const handleClickDescuento = (description) => {
+    const descuento = descuentos[description];
+    if (!descuento) {
+      alert("Por favor, ingresa un descuento válido");
+      return;
+    }
 
     fetch(DISCOUNT_ENDPOINT, {
       method: "PUT",
       body: JSON.stringify({
-        description: descripcion,
+        description,
         discount: descuento,
       }),
       headers: {
@@ -86,8 +99,7 @@ export const AdminSection = () => {
         }
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         alert("Descuento aplicado con éxito");
       })
       .catch((error) => {
@@ -100,6 +112,13 @@ export const AdminSection = () => {
       state: curso,
     });
   };
+
+  if (!loggedIn)
+    return (
+      <section className="adminsection-unauthorized">
+        <p>Para ver el panel de administrador, debes iniciar sesión</p>
+      </section>
+    );
 
   return (
     <section className="adminsection">
@@ -121,48 +140,46 @@ export const AdminSection = () => {
             </tr>
           </thead>
           <tbody>
-            {cursos &&
-              cursos.map((curso) => (
-                <tr key={curso.id}>
-                  <td>{curso.description}</td>
-                  <td>{curso.category.description}</td>
-                  <td>{curso.longDescription}</td>
-                  <td>
-                    <input
-                      type="number"
-                      name="descuento"
-                      min="0"
-                      max="100"
-                      className="input-descuento"
-                      id={`descuento_${curso.description}`}
-                    />
-                    <button
-                      className="btn-descuento"
-                      data-desc={curso.description}
-                      onClick={handleClickDescuento}
-                    >
-                      Aplicar
-                    </button>
-                  </td>
-                  <td className="td-acciones">
-                    <button
-                      className="btn-table"
-                      onClick={() => {
-                        handleClickEditar(curso);
-                      }}
-                    >
-                      Editar
-                    </button>
-                    <button
-                      className="btn-table"
-                      data-desc={curso.description}
-                      onClick={handleClickEliminar}
-                    >
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              ))}
+            {cursos.map((curso) => (
+              <tr key={curso.description}>
+                <td>{curso.description}</td>
+                <td>{curso.category.description}</td>
+                <td>{curso.longDescription}</td>
+                <td>
+                  <input
+                    type="number"
+                    name="descuento"
+                    min="0"
+                    max="100"
+                    className="input-descuento"
+                    value={descuentos[curso.description] || ""}
+                    onChange={(e) =>
+                      handleChangeDescuento(curso.description, e.target.value)
+                    }
+                  />
+                  <button
+                    className="btn-descuento"
+                    onClick={() => handleClickDescuento(curso.description)}
+                  >
+                    Aplicar
+                  </button>
+                </td>
+                <td className="td-acciones">
+                  <button
+                    className="btn-table"
+                    onClick={() => handleClickEditar(curso)}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    className="btn-table"
+                    onClick={() => handleClickEliminar(curso.description)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

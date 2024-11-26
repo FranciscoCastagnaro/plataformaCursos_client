@@ -1,6 +1,7 @@
 import "./styles/cursocard.css";
 import { useNavigate } from "react-router-dom";
 
+
 export const CursoCard = ({
   descripcion,
   descripcionLarga,

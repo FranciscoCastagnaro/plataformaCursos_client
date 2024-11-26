@@ -1,9 +1,50 @@
 import { useLocation } from "react-router-dom";
 import "./styles/cursodetallesection.css";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import courseimage from "/src/assets/curso-foto-ejemplo.png";
 
 export const CursoDetalleSection = () => {
   const { state } = useLocation();
   const curso = state;
+  const loggedIn = useSelector((state) => state.user);
+  const URL = "http://localhost:4002";
+  const CART_ENDPOINT = `${URL}/cart`;
+  const [cursoInCart, setCursoInCart] = useState(false);
+
+  useEffect(() => {
+    if (!loggedIn) return;
+
+    const token = loggedIn.token;
+    const userId = loggedIn.userId;
+
+    fetch(`${CART_ENDPOINT}/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.log("Error");
+          return;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const courses = data.courses;
+        console.log(courses);
+        const isCourseInCart = courses.some(
+          (course) => course.description === curso.descripcion
+        );
+        setCursoInCart(isCourseInCart);
+      })
+      .catch((error) => {
+        console.error("Hubo un error:", error);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loggedIn]);
 
   if (!curso)
     return (
@@ -27,6 +68,40 @@ export const CursoDetalleSection = () => {
   const fechaInicio = transformarFecha(curso.fechaInicio);
   const profesor = curso.profesor;
 
+  const handleAgregarAlCarro = () => {
+    const token = loggedIn.token;
+    const username = loggedIn.username;
+
+    fetch(`${CART_ENDPOINT}/add`, {
+      method: "POST",
+      body: JSON.stringify({
+        course: curso.descripcion,
+        username,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return "Curso ya adquirido";
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data == "Curso ya adquirido") {
+          alert(data);
+        } else {
+          alert("Curso añadido al carrito.");
+          setCursoInCart(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Hubo un error:", error);
+      });
+  };
+
   return (
     <section className="cursodetallesection">
       <div className="curso-detalle-panel">
@@ -47,6 +122,18 @@ export const CursoDetalleSection = () => {
           <p className="curso-vacantes-detalle">
             <strong>Vacantes:</strong> {vacantesDisponibles}/{vacantesTotales}
           </p>
+          {loggedIn && (
+            <button
+              onClick={handleAgregarAlCarro}
+              className={`curso-carro`}
+              disabled={cursoInCart}
+            >
+              {cursoInCart ? "Añadido al carrito" : "Añadir al carrito"}
+            </button>
+          )}
+        </div>
+        <div className="panel-right">
+          <img src={courseimage} alt="course-image" />
         </div>
       </div>
     </section>
